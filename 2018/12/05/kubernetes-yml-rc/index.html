@@ -89,7 +89,7 @@
 <meta property="og:site_name" content="xukangqi&#39;s blog">
 <meta property="og:description" content="最近在看kubernetes的一些东西，在这边记录一下整理的一些东西. ReplicationController类型的yml解析">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-05T08:54:28.824Z">
+<meta property="og:updated_time" content="2018-12-05T08:56:49.122Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kubernetes中yml配置文件解析">
 <meta name="twitter:description" content="最近在看kubernetes的一些东西，在这边记录一下整理的一些东西. ReplicationController类型的yml解析">
@@ -372,16 +372,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2018/12/05/kubernetes-yml-rc/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2018/12/05/kubernetes-yml-rc/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -419,7 +409,7 @@
       
         <p>最近在看kubernetes的一些东西，在这边记录一下整理的一些东西.</p>
 <h2 id="ReplicationController类型的yml解析"><a href="#ReplicationController类型的yml解析" class="headerlink" title="ReplicationController类型的yml解析"></a>ReplicationController类型的yml解析</h2><a id="more"></a>
- <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr"> apiVersion:</span> <span class="string">v1</span></span><br><span class="line"> <span class="comment"># 类型</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">ReplicationController</span></span><br><span class="line"><span class="comment"># ReplicationController的类型，可不填</span></span><br><span class="line"><span class="attr">metadata:</span> </span><br><span class="line"><span class="attr">  name:</span> <span class="string">mysql</span></span><br><span class="line"><span class="attr">spec:</span> </span><br><span class="line"> <span class="comment">#pods的副本数量</span></span><br><span class="line"><span class="attr">  replicas:</span> <span class="number">1</span></span><br><span class="line">  <span class="comment"># 控制所有label是mysql的pod</span></span><br><span class="line"><span class="attr">  selector:</span></span><br><span class="line"><span class="attr">    app:</span> <span class="string">mysql</span></span><br><span class="line">  <span class="comment"># 创造的pods的模版</span></span><br><span class="line"><span class="attr">  template:</span></span><br><span class="line">   <span class="comment"># pods的lable</span></span><br><span class="line"><span class="attr">    metadata:</span></span><br><span class="line"><span class="attr">      labels:</span></span><br><span class="line"><span class="attr">        app:</span> <span class="string">mysql</span></span><br><span class="line">    <span class="comment">#期待创建的容器</span></span><br><span class="line"><span class="attr">    spec:</span></span><br><span class="line"><span class="attr">      containers:</span></span><br><span class="line"><span class="attr">        - name:</span> <span class="string">mysql</span></span><br><span class="line"><span class="attr">          image:</span> <span class="string">mysql</span></span><br><span class="line"><span class="attr">          ports:</span></span><br><span class="line">            <span class="comment">#在pods中暴露的端口</span></span><br><span class="line"><span class="attr">            - containerPort:</span> <span class="number">3306</span></span><br><span class="line">          <span class="comment">#容器中的环境设置</span></span><br><span class="line"><span class="attr">          env:</span></span><br><span class="line"><span class="attr">            - name:</span> <span class="string">MYSQL_ROOT_PASSWORD</span></span><br><span class="line"><span class="attr">              value:</span> <span class="string">"123456"</span></span><br></pre></td></tr></table></figure>
+ <figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr"> apiVersion:</span> <span class="string">v1</span></span><br><span class="line"> <span class="comment"># 类型</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">ReplicationController</span></span><br><span class="line"><span class="comment"># ReplicationController的类型，可不填</span></span><br><span class="line"><span class="attr">metadata:</span> </span><br><span class="line"><span class="attr">  name:</span> <span class="string">mysql</span></span><br><span class="line"><span class="attr">spec:</span> </span><br><span class="line"> <span class="comment">#pods的副本数量</span></span><br><span class="line"><span class="attr">  replicas:</span> <span class="number">1</span></span><br><span class="line">  <span class="comment"># 控制所有label是mysql的pod</span></span><br><span class="line"><span class="attr">  selector:</span></span><br><span class="line"><span class="attr">    app:</span> <span class="string">mysql</span></span><br><span class="line">  <span class="comment"># 创造的pods的模版</span></span><br><span class="line"><span class="attr">  template:</span></span><br><span class="line">   <span class="comment"># pods的label</span></span><br><span class="line"><span class="attr">    metadata:</span></span><br><span class="line"><span class="attr">      labels:</span></span><br><span class="line"><span class="attr">        app:</span> <span class="string">mysql</span></span><br><span class="line">    <span class="comment">#期待创建的容器</span></span><br><span class="line"><span class="attr">    spec:</span></span><br><span class="line"><span class="attr">      containers:</span></span><br><span class="line"><span class="attr">        - name:</span> <span class="string">mysql</span></span><br><span class="line"><span class="attr">          image:</span> <span class="string">mysql</span></span><br><span class="line"><span class="attr">          ports:</span></span><br><span class="line">            <span class="comment">#在pods中暴露的端口</span></span><br><span class="line"><span class="attr">            - containerPort:</span> <span class="number">3306</span></span><br><span class="line">          <span class="comment">#容器中的环境设置</span></span><br><span class="line"><span class="attr">          env:</span></span><br><span class="line"><span class="attr">            - name:</span> <span class="string">MYSQL_ROOT_PASSWORD</span></span><br><span class="line"><span class="attr">              value:</span> <span class="string">"123456"</span></span><br></pre></td></tr></table></figure>
       
     </div>
     
@@ -487,16 +477,6 @@
           
 
   
-    <div class="comments" id="comments">
-      <div id="disqus_thread">
-        <noscript>
-          Please enable JavaScript to view the
-          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
-        </noscript>
-      </div>
-    </div>
-
-  
 
 
 
@@ -544,7 +524,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-count">2</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -769,26 +749,6 @@
 
   
 
-    
-      <script id="dsq-count-scr" src="https://xkq.disqus.com/count.js" async></script>
-    
-
-    
-      <script type="text/javascript">
-        var disqus_config = function () {
-          this.page.url = 'http://yoursite.com/2018/12/05/kubernetes-yml-rc/';
-          this.page.identifier = '2018/12/05/kubernetes-yml-rc/';
-          this.page.title = 'kubernetes中yml配置文件解析';
-        };
-        var d = document, s = d.createElement('script');
-        s.src = 'https://xkq.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', '' + +new Date());
-        (d.head || d.body).appendChild(s);
-      </script>
-    
-
-  
-
 
 
 
@@ -801,6 +761,10 @@
   
 
 
+
+
+
+  
 
 
 
