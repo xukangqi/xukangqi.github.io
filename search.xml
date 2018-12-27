@@ -1,9 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[2018年终总结]]></title>
+    <url>%2F2018%2F12%2F25%2F2018-summary%2F</url>
+    <content type="text"><![CDATA[转眼间2018年已经快要结束了，这一年对于我来说无论是从什么方面来讲都是即为不寻常的一年，现在回首还是历历在目。 学习生活]]></content>
+      <categories>
+        <category>生活</category>
+      </categories>
+      <tags>
+        <tag>summary</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[kubernetes中yml配置文件解析]]></title>
     <url>%2F2018%2F12%2F05%2Fkubernetes-yml-rc%2F</url>
-    <content type="text"><![CDATA[最近在看kubernetes的一些东西，在这边记录一下整理的一些东西. ReplicationController类型的yml解析ReplicationController主要用于管理pods，用于在pods不足时进行创建pods,并且进行调度pods 123456789101112131415161718192021222324252627282930 apiVersion: v1 # 类型kind: ReplicationController# ReplicationController的类型，可不填metadata: name: mysqlspec: #pods的副本数量 replicas: 1 # 控制所有label是mysql的pod selector: app: mysql # 创造的pods的模版 template: # pods的label metadata: labels: app: mysql #期待创建的容器 spec: containers: - name: mysql image: mysql ports: #在pods中暴露的端口 - containerPort: 3306 #容器中的环境设置 env: - name: MYSQL_ROOT_PASSWORD value: "123456" service类型的yml文件解析 由于pods的创建和分配都是智能化的过程，往往会存在外部系统不知道pods具体位置的情况，因此kubernetes通过提供service实现对pods请求的代理和转发。service起名为route或者proxy更准确一些（类似于nginx之类所提供的请求代理功能） 1234567891011121314apiVersion: v1# 类型kind: Service# labelmetadata: name: mysqlspec: #端口 ports: - port: 3306 #可设置nodePort: 13306 表示对外暴露的端口 #负责管理的pods selector: app: mysql]]></content>
+    <content type="text"><![CDATA[最近在看kubernetes的一些东西，在这边记录一下整理的一些东西. ReplicationController类型的yml解析ReplicationController主要用于管理pods，用于在pods不足时进行创建pods,并且进行调度pods 123456789101112131415161718192021222324252627282930 apiVersion: v1 # 类型kind: ReplicationController# ReplicationController的类型，可不填metadata: name: mysqlspec: #pods的副本数量 replicas: 1 # 控制所有label是mysql的pod selector: app: mysql # 创造的pods的模版 template: # pods的label metadata: labels: app: mysql #期待创建的容器 spec: containers: - name: mysql image: mysql ports: #在pods中暴露的端口 - containerPort: 3306 #容器中的环境设置 env: - name: MYSQL_ROOT_PASSWORD value: "123456" service类型的yml文件解析 由于pods的创建和分配都是智能化的过程，往往会存在外部系统不知道pods具体位置的情况，因此kubernetes通过提供service实现对pods请求的代理和转发。service起名为route或者proxy更准确一些（类似于nginx之类所提供的请求代理功能） 12345678910111213apiVersion: v1# 类型kind: Service# labelmetadata: name: mysqlspec:#可设置type: NodePort，并且在下面ports处设置nodePort: 13306 表示对外暴露的端口 ports: - port: 3306 #负责管理的pods selector: app: mysql]]></content>
       <categories>
         <category>技术</category>
       </categories>
